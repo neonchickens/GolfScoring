@@ -1,3 +1,6 @@
+from typing import Type
+from datetime import datetime, date
+
 class Course:
     def __init__(self):
         self.name = ""
@@ -10,7 +13,7 @@ class Course:
         return f"{self.name}, {self.index_tee}, {self.yards_per_hole}"
 
 
-    def file_from(location):
+    def file_from(location: str) -> list['Course']:
         newCourses = []
         with open(location, "r", encoding="utf-8") as f:
             index = 0
@@ -33,20 +36,26 @@ class Course:
         return newCourses
 
 
+def get_date_from_string(string: str) -> date:
+    return 
+
 class Scorecard:
+
     def __init__(self):
         self.player = ""
-        self.date = ""
+        self.date = date(2000, 1, 1)
         self.course = ""
         self.index_tee = 0
         self.score_per_hole = []
+
+    
 
 
     def __str__(self):
         return f"{self.player}, {self.course}, {self.index_tee}, {self.score_per_hole}"
     
 
-    def file_from(location):
+    def file_from(location: str) -> list['Scorecard']:
         newScorecards = []
         with open(location, "r", encoding="utf-8") as f:
             index = 0
@@ -58,7 +67,7 @@ class Scorecard:
                 if index == 0:
                     course = line
                 elif index == 1:
-                    date = line
+                    date = datetime.fromisoformat(line).date()
                 else:
                     newScorecard = Scorecard()
                     newScorecard.course = course
