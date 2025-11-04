@@ -18,6 +18,7 @@ directory_scores = f"Data/Scorecards/{dir_party}"
 # Real golf handicaps use a total number of strokes between players and the hole handicaps set by the course to determine scores
 # TODO implement real handicaps next season
 is_real_handicap_system = False
+is_scaled_to_lowest_handicap = True
 handicap_per_hole = { "w": 1, "k": 2, "m": 2.5, }
 handicap_per_course = { "w": 0, "k": 9, "m": 14, }
 # handicap_per_course = { "w": 5, "k": 14, "m": 21, }
@@ -115,15 +116,17 @@ while len(queue_scorecards) > 0:
 
     # get the minimum handicap of all players in the match
     # the player with the lowest handicap receives no strokes
-    min_handicap = 1000
-    for m in lst_match:
-        p = m.player
-        if is_real_handicap_system:
-            if handicap_per_course[p] < min_handicap:
-                min_handicap = handicap_per_course[p]
-        else:
-            if handicap_per_hole[p] < min_handicap:
-                min_handicap = handicap_per_hole[p]
+    min_handicap = 0
+    if is_scaled_to_lowest_handicap:
+        min_handicap = 1000
+        for m in lst_match:
+            p = m.player
+            if is_real_handicap_system:
+                if handicap_per_course[p] < min_handicap:
+                    min_handicap = handicap_per_course[p]
+            else:
+                if handicap_per_hole[p] < min_handicap:
+                    min_handicap = handicap_per_hole[p]
 
     # go through holes in order
     score_running = 0
@@ -234,5 +237,9 @@ create_games_box_plot(list(player_games.keys()), list(player_games.values()))
 create_pie_par(hole_par)
 
 # Course stats
-create_course_par(course_h_par)
-create_hole_par(hole_h_par)
+if is_scaled_to_lowest_handicap:
+    create_course_par(course_h_par)
+    create_hole_par(hole_h_par)
+else:
+    create_course_par(course_par)
+    create_hole_par(hole_par)
