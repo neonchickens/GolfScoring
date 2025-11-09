@@ -4,7 +4,7 @@ from matplotlib.patches import Polygon
 import numpy as np
 
 
-
+folder_output = "Output/"
 colors = ["red", "orange", "green", "blue", "purple"]
 
 
@@ -75,6 +75,7 @@ def create_strokes_box_plot(keys, data):
                 transform=ax1.get_xaxis_transform(),
                 horizontalalignment='center', color=colors[tick])
 
+    plt.savefig(f'{folder_output}par_per_hole.png')
     plt.show()
 
 
@@ -145,6 +146,7 @@ def create_games_box_plot(keys, data):
                 transform=ax1.get_xaxis_transform(),
                 horizontalalignment='center', color=colors[tick])
 
+    plt.savefig(f'{folder_output}strokes_per_game.png')
     plt.show()
 
 
@@ -161,6 +163,7 @@ def create_season_strokes(data, data_cumulative):
     plt.legend(loc="upper left")
     plt.xticks(range(0, 9 * count_games + 1, 9), range(0, 9 * count_games + 1, 9))
     plt.grid()
+    plt.savefig(f'{folder_output}strokes_over_season.png')
     plt.show()
 
 
@@ -177,6 +180,7 @@ def create_season_skins(data):
     plt.yticks(range(0, 9 * count_games // 2, 3), range(0, 9 * count_games // 2, 3))
     plt.xticks(range(0, 9 * count_games + 1, 9), range(0, 9 * count_games + 1, 9))
     plt.grid()
+    plt.savefig(f'{folder_output}skins_over_season.png')
     plt.show()
 
 
@@ -193,6 +197,7 @@ def create_season_par(data, data_cumulative):
     plt.legend(loc="upper left")
     plt.xticks(range(0, 9 * count_games + 1, 9), range(0, 9 * count_games + 1, 9))
     plt.grid()
+    plt.savefig(f'{folder_output}par_over_season.png')
     plt.show()
 
 
