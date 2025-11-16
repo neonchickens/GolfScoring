@@ -1,0 +1,5 @@
+![http://url/to/img.png](https://github.com/neonchickens/GolfScoring/blob/master/Output/skins_over_season.png)
+![http://url/to/img.png](https://github.com/neonchickens/GolfScoring/blob/master/Output/strokes_over_season.png)
+![http://url/to/img.png](https://github.com/neonchickens/GolfScoring/blob/master/Output/strokes_per_game.png)
+![http://url/to/img.png](https://github.com/neonchickens/GolfScoring/blob/master/Output/par_over_season.png)
+![http://url/to/img.png](https://github.com/neonchickens/GolfScoring/blob/master/Output/par_per_hole.png)
