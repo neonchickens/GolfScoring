@@ -219,11 +219,12 @@ for p in handicap_per_course: # iterate list of players
     total = 0
     for s in recent_games:
         total += sum(s.strokes_per_hole)
-    hdcp27 = total / len(recent_games) - 27
-    hdcp32 = hdcp27 * (32/27)
-    hdcp36 = hdcp27 * (36/27)
-    hdcp72 = hdcp27 * (72/27)
-    print(f"{p}: {int(hdcp27)} through par 27 / {int(hdcp32)} through par 32 / {int(hdcp36)} through par 36 / {int(hdcp72)} through par 72")
+    if len(recent_games) > 0:
+        hdcp27 = total / len(recent_games) - 27
+        hdcp32 = hdcp27 * (32/27)
+        hdcp36 = hdcp27 * (36/27)
+        hdcp72 = hdcp27 * (72/27)
+        print(f"{p}: {int(hdcp27)} through par 27 / {int(hdcp32)} through par 32 / {int(hdcp36)} through par 36 / {int(hdcp72)} through par 72")
 
 
 # Season & player stats
